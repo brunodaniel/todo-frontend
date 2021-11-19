@@ -1,12 +1,14 @@
 import React from 'react';
-import {Button} from 'reactstrap';
 import {Link} from 'react-router-dom';
+import Api from '../../api/api';
+import { useNavigate } from 'react-router-dom';
 
 
 
 const Cadastro = () => {
-
-  const handleSubmit = (evento) => {
+  const navigate = useNavigate();
+  
+  const handleSubmit = async (evento) => {
     evento.preventDefault();
 
     console.log(evento.target.titulo.value);
@@ -22,6 +24,18 @@ const Cadastro = () => {
       status,
       prazo,
       descricao,
+    }
+
+    const request = await Api.fetchPost(tarefa);
+    if(request.status === 500) {
+      alert("ERRO NO SERVIDOR");
+    }
+    const result = await request.json();
+    if(result.error) {
+      console.log(result.error);
+    }else {
+      alert(result.message);
+      navigate('/');
     }
     
   }
@@ -41,7 +55,7 @@ const Cadastro = () => {
           <label className="form mb-1" for="prioridade">Prioridade</label>
           <select className="form-control mb-3" id="prioridade" name="prioridade">
             <option>Baixa</option>
-            <option>Media</option>
+            <option>Média</option>
             <option>Alta</option>
 
           </select>
@@ -49,9 +63,9 @@ const Cadastro = () => {
         <div className="form-group col">
           <label className="form mb-1" for="status">Status</label>
           <select className="form-control mb-3" id="status" name="status">
-            <option>Aguardando</option>
-            <option>Execução</option>
-            <option>Concluido</option>
+            <option>Fazer</option>
+            <option>Fazendo</option>
+            <option>Feito</option>
         
           </select>
         </div>
