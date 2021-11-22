@@ -1,6 +1,10 @@
-import React from "react";
+import React from 'react'
+import Cadastro from '../../../pages/Cadastro/Cadastro'
+
 
 const Header = () => {
+
+
     return(
         <nav className="navbar  navbar-expand-lg navbar-light bg-primary w-100">
         <div className="container">
@@ -16,9 +20,8 @@ const Header = () => {
               <li className="nav-item">
                   <a className="nav-link active" href="/cadastro">Cadastro</a>
               </li>
-              <li className="nav-item">
-                <a href="/edit" className="nav-link active">Editar</a>
-              </li>
+
+             
             </ul>
           </div>
         </div>

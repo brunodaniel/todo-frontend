@@ -1,13 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react'
 import {Link} from 'react-router-dom';
 import Api from '../../api/api';
 import { useNavigate } from 'react-router-dom';
-
+import { Modal } from 'react-responsive-modal';
+import 'react-responsive-modal/styles.css';
 
 
 const Cadastro = () => {
-  const navigate = useNavigate();
   
+  const [open, setOpen] = useState(false);
+
+  const navigate = useNavigate();
+
+  const AbreModal = () => setOpen(true);
+  const FechaModal = () => setOpen(false);
+  
+  useEffect(() =>{
+    AbreModal();
+  }, [])
+
   const handleSubmit = async (evento) => {
     evento.preventDefault();
 
@@ -42,52 +53,52 @@ const Cadastro = () => {
 
   return (
     <div className="container">
-      <div className="card mt-4">
-        <div className="card-title">
-          <div className="row">
-            <div className="col"></div>
-        <form onsubmit={handleSubmit}>
-        <div className="form-group col">
-          <label className="form mb-1" for="titulo">Titulo</label>
-          <input type="text" className="col-xs-3 form-control mb-3" id="titulo" placeholder="Titulo" name="titulo"></input>
-        </div>
-        <div className="form-group col">
-          <label className="form mb-1" for="prioridade">Prioridade</label>
-          <select className="form-control mb-3" id="prioridade" name="prioridade">
-            <option>Baixa</option>
-            <option>Média</option>
-            <option>Alta</option>
+      <Modal open={open} onClose={FechaModal} center showCloseIcon={false}>
+        <div className="card mt-4">
+          <div className="card-title">
+            <div className="row">
+              
+              <form onSubmit={handleSubmit}>
+                <div className="form-group col-auto">
+                  <label className="form mb-1" htmlFor="titulo">Titulo</label>
+                  <input type="text" className="col-xs-3 form-control mb-3" id="titulo" placeholder="Titulo" name="titulo"></input>
+                </div>
+                <div className="form-group col-auto">
+                  <label className="form mb-1" htmlFor="prioridade">Prioridade</label>
+                  <select className="form-control mb-3" id="prioridade" name="prioridade">
+                    <option>Baixa</option>
+                    <option>Média</option>
+                    <option>Alta</option>
+                  </select>
+                </div>
+                <div className="form-group col-auto">
+                  <label className="form mb-1" htmlFor="status">Status</label>
+                    <select className="form-control mb-3" id="status" name="status">
+                      <option>Fazer</option>
+                      <option>Fazendo</option>
+                      <option>Feito</option>
+                  
+                    </select>
+                </div>
+                <div className="form-group col-auto">
+                  <label className="form mb-1" htmlFor="prazo">Prazo</label>
+                  <input type="date" id="prazo" className="form-control mb-3" name="prazo"/>
+                </div>
+                <div className="form-group col-auto">
+                <label htmlFor="descricao">Descrição</label>
+                
+                <textarea className="form-control mb-3" id="descricao" rows="3" name="descricao"></textarea>
+                </div>
 
-          </select>
+                <button type="submit" className ="btn btn-primary">Enviar</button>
+                <Link to="/" className="btn btn-danger">Cancel</Link>
+                
+              </form>
+              
+             </div>
+          </div>
         </div>
-        <div className="form-group col">
-          <label className="form mb-1" for="status">Status</label>
-          <select className="form-control mb-3" id="status" name="status">
-            <option>Fazer</option>
-            <option>Fazendo</option>
-            <option>Feito</option>
-        
-          </select>
-        </div>
-        <div className="form-group col">
-          <label className="form mb-1" for="prazo">Prazo</label>
-          <input type="date" id="prazo" className="form-control mb-3" name="prazo"/>
-        </div>
-        <div className="form-group col">
-        <label for="descricao">Descrição</label>
-        <textarea class="form-control mb-3" id="descricao" rows="3" name=""descricao></textarea>
-        </div>
-
-
-    
-        <button type="submit" className ="btn btn-primary">Enviar</button>
-        <Link to="/" className="btn btn-danger">Cancel</Link>
-        
-      </form>
-      
-      </div>
-      </div>
-      </div>
+      </Modal>
     </div>
   )
 }

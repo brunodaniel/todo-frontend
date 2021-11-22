@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Api from "../../api/api";
+import { useNavigate } from 'react-router-dom';
 
 const Edit = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [tarefa, setTarefa] = useState({});
 
@@ -26,6 +28,21 @@ const Edit = () => {
 
   }
 
+  const handleSubmit = async (evento) => {
+    evento.preventDefault();
+    console.log(tarefa);
+    const request = await Api.fetchPut(tarefa,id);
+    const response = await request.json();
+    alert(response.message);
+    navigate(`/view/${id}`);
+
+
+  }
+
+  const voltar = () => {
+    navigate(`/view/${id}`);
+  }
+
   return (
     <div className="container">
       <div className="card mt-4">
@@ -37,7 +54,7 @@ const Edit = () => {
           </div>
         </div>
         <div className="card-body">
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="row mb-4">
               <div className="col-4">
                 <div className="form-group">
@@ -115,7 +132,7 @@ const Edit = () => {
                 <button type="submit" className="btn btn-success">
                   Enviar
                 </button>
-                <button type="button" className="btn btn-danger">
+                <button type="button" className="btn btn-danger" onClick={voltar}>
                   Voltar
                 </button>
               </div>
