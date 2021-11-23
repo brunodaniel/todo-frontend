@@ -1,5 +1,5 @@
 const Api = {
-    apiUrl: 'http://localhost:3001/tarefas',
+    apiUrl: 'https://taskmanager-backend-blue.herokuapp.com/tarefas',
     fetchGetAll: () => fetch(Api.apiUrl),
     fetchGetById: (id) => fetch(`${Api.apiUrl}/${id}`),
     fetchPost: (data) => {
