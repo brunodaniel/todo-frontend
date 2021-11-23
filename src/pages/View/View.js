@@ -4,6 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import Api from '../../api/api';
 import { Modal } from 'react-responsive-modal';
 import 'react-responsive-modal/styles.css';
+import Badge from 'react-bootstrap/Badge';
+import './View.css';
 
 const View = () => {
     const [tarefa, setTarefa] = useState({});
@@ -39,6 +41,8 @@ const View = () => {
         }
     }
 
+    
+
     return(
 
 
@@ -47,9 +51,9 @@ const View = () => {
                 <div className="col-6">
                     <div className="card my-5 ">
                         <h1 className="text-center my-4"><b>{tarefa.titulo}</b></h1>
-                        <p className="text">Prazo: {tarefa.prazo}</p>
-                        <p className="text">Prioridade: {tarefa.prioridade}</p>
-                        <p className="text">Descrição: {tarefa.descricao}</p>
+                        <p className="text"><b>Prazo: </b>{tarefa.prazo}</p>
+                        <Badge bg="primary mb-3">{tarefa.prioridade}</Badge>
+                        <p className="text"><b>Descrição:</b> {tarefa.descricao}</p>
                         <div className="btn-group mt-3 w-100">
                             <Link to={`/edit/${tarefa._id}`} className="btn btn-info">Editar</Link>
                             <button className="btn btn-danger" onClick={AbreModal}>Excluir</button>

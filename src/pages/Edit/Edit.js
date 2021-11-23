@@ -73,7 +73,7 @@ const Edit = () => {
               <div className="col-4">
                 <div className="form-group">
                   <label htmlFor="autor">Prioridade:</label>
-                  <input
+                  <select
                     id="prioridade"
                     type="text"
                     className="form-control"
@@ -81,13 +81,17 @@ const Edit = () => {
                     value={tarefa.prioridade}
                     onChange={handleFieldsChange}
                     name="prioridade"
-                  />
+                    >
+                    <option>Baixa</option>
+                    <option>Média</option>
+                    <option>Alta</option>
+                    </select>
                 </div>
               </div>
               <div className="col-4">
                 <div className="form-group">
                   <label htmlFor="genero">Status:</label>
-                  <input
+                  <select
                     id="status"
                     type="text"
                     className="form-control"
@@ -95,7 +99,11 @@ const Edit = () => {
                     onChange={handleFieldsChange}
                     placeholder="status"
                     name="status"
-                  />
+                  >
+                    <option>Fazer</option>
+                    <option>Fazendo</option>
+                    <option>Feito</option>
+                  </select>
                 </div>
               </div>
             </div>

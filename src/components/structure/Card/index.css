@@ -2,3 +2,15 @@
   max-width: 15em;
   max-height: 15em;
 }
+
+.card-text {
+  color: rgb(0, 0, 0);
+}
+
+.card-title {
+  color: rgb(0, 0, 0);
+}
+.badge {
+  margin-left: 2em;
+  margin-right: 1em;
+}
