@@ -56,15 +56,16 @@ const Cadastro = () => {
 
   return (
     <div className="container">
+      
       <Modal open={open} onClose={FechaModal} center showCloseIcon={false}>
+      <h1 className="text-center">Nova Tarefa</h1>
         <div className="card mt-4">
           <div className="card-title">
             <div className="row">
-              
               <form onSubmit={handleSubmit}>
-                <div className="form-group col-auto">
+                <div className="form-group col-auto">      
                   <label className="form mb-1" htmlFor="titulo">Titulo</label>
-                  <input type="text" className="col-xs-3 form-control mb-3" id="titulo" placeholder="Titulo" name="titulo"></input>
+                  <input type="text" className="col-xs-3 form-control mb-3" id="titulo" placeholder="Titulo" name="titulo" required></input>
                 </div>
                 <div className="form-group col-auto">
                   <label className="form mb-1" htmlFor="prioridade">Prioridade</label>
@@ -85,7 +86,7 @@ const Cadastro = () => {
                 </div>
                 <div className="form-group col-auto">
                   <label className="form mb-1" htmlFor="prazo">Prazo</label>
-                  <input type="date" id="prazo" className="form-control mb-3" name="prazo"/>
+                  <input type="date" id="prazo" className="form-control mb-3" name="prazo" required/>
                 </div>
                 <div className="form-group col-auto">
                 <label htmlFor="descricao">Descrição</label>

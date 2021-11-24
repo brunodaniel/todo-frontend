@@ -32,9 +32,20 @@ const Edit = () => {
     evento.preventDefault();
     console.log(tarefa);
     const request = await Api.fetchPut(tarefa,id);
+
+    if(request.status === 500) {
+      alert("ERRO NO SERVIDOR");
+    }
+    
     const response = await request.json();
-    alert(response.message);
-    navigate(`/view/${id}`);
+    // alert(response.message);
+    if(response.error) {
+      console.log(response.error);
+    }else {
+      alert(response.message);
+      navigate(`/view/${id}`);
+    }
+    
 
 
   }
@@ -42,6 +53,8 @@ const Edit = () => {
   const voltar = () => {
     navigate(`/view/${id}`);
   }
+
+    
 
   return (
     <div className="container">
@@ -67,6 +80,7 @@ const Edit = () => {
                     value={tarefa.titulo}
                     onChange={handleFieldsChange}
                     name="titulo"
+                    required
                   />
                 </div>
               </div>
@@ -81,6 +95,7 @@ const Edit = () => {
                     value={tarefa.prioridade}
                     onChange={handleFieldsChange}
                     name="prioridade"
+                    
                     >
                     <option>Baixa</option>
                     <option>Média</option>
@@ -119,6 +134,7 @@ const Edit = () => {
                     className="form-control"
                     placeholder="prazo da tarefa"
                     name="prazo"
+                    required
                   />
                 </div>
               </div>
@@ -133,6 +149,7 @@ const Edit = () => {
                     className="form-control"
                     placeholder="Descrição"
                     name="descricao"
+                    
                   />
                 </div>
               </div>
