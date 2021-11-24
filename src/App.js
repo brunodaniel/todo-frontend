@@ -7,6 +7,7 @@ import View from '../src/pages/View/View';
 import { Routes, Route } from 'react-router-dom';
 
 
+
 function App() {
   return (
    <div>
@@ -17,6 +18,7 @@ function App() {
      <Route path="/edit/:id" element={<Edit/>}/>
      <Route path="/view/:id" element={<View/>}/>
      </Routes>
+     
    </div>
   );
 }
