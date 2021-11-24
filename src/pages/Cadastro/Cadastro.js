@@ -13,7 +13,10 @@ const Cadastro = () => {
   const navigate = useNavigate();
 
   const AbreModal = () => setOpen(true);
-  const FechaModal = () => setOpen(false);
+  const FechaModal = () => {
+    setOpen(false);
+    navigate('/');
+  };
   
   useEffect(() =>{
     AbreModal();

@@ -136,7 +136,7 @@ const Edit = () => {
                   />
                 </div>
               </div>
-              <div className="col-4 d-flex align-items-end justify-content-around">
+              <div className="col-4 d-flex align-items-end justify-content">
                 <button type="submit" className="btn btn-success">
                   Enviar
                 </button>

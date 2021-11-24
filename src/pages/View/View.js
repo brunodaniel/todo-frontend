@@ -4,7 +4,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import Api from '../../api/api';
 import { Modal } from 'react-responsive-modal';
 import 'react-responsive-modal/styles.css';
-import Badge from 'react-bootstrap/Badge';
 import './View.css';
 
 const View = () => {
@@ -47,13 +46,13 @@ const View = () => {
 
 
         <div className="container">
-            <div className="row my-5">
+            <div className="row my-5 offset-md-4">
                 <div className="col-6">
                     <div className="card my-5 ">
                         <h1 className="text-center my-4"><b>{tarefa.titulo}</b></h1>
                         <p className="text"><b>Prazo: </b>{tarefa.prazo}</p>
                         <p className="text"><b>Prioridade: </b>{tarefa.prioridade}</p>
-                        {/* <Badge bg="primary mb-3">{tarefa.prioridade}</Badge> */}
+                        <p className="text"><b>Status: </b>{tarefa.status}</p>
                         <p className="text"><b>Descrição:</b> {tarefa.descricao}</p>
                         <div className="btn-group mt-3 w-100">
                             <Link to={`/edit/${tarefa._id}`} className="btn btn-info">Editar</Link>
